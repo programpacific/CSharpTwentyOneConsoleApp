@@ -9,9 +9,7 @@ namespace TwentyOne
         static void Main(string[] args)
         {
             Deck deck = new Deck();
-
-            int timesShuffled = 0;
-            deck = Shuffle(deck, out timesShuffled, 4);
+            deck.Shuffle();
 
             foreach (Card card in deck.Cards)
             {
