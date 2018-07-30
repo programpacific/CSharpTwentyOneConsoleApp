@@ -33,10 +33,8 @@ namespace TwentyOne
 
         public void Shuffle(int times = 1)
         {
-            timesShuffled = 0;
             for (int i = 0; i < times; i++)
             {
-                timesShuffled++;
                 List<Card> tempList = new List<Card>();
                 Random random = new Random();
 
