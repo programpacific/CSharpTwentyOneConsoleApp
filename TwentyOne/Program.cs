@@ -21,6 +21,34 @@ namespace TwentyOne
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //public static Deck Shuffle(Deck deck, int times)
         //{
         //    for (int i = 0; i < times; i++)
