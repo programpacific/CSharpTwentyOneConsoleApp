@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TwentyOne
 {
@@ -57,9 +54,29 @@ namespace TwentyOne
                     Dealer.Deal(player.Hand);
                     if ( i == 1) // Means second turn.
                     {
-
+                        bool blackJack = TwentyOneRules.CheckForBlackJack(player.Hand);
+                        if (blackJack)
+                        {
+                            Console.WriteLine("Blackjack! {0} wins {1}", player.Name, Bets[player]); // Bets[player] retrieves the original amount bet.
+                            player.Balance += Convert.ToInt32((Bets[player] * 1.5) + Bets[player]); // Adds 1.5x + original bet back!
+                            return;
+                        }
                     }
 
+                }
+                Console.Write("Dealer: ");
+                Dealer.Deal(Dealer.Hand);
+                if (i == 1)
+                {
+                    bool blackJack = TwentyOneRules.CheckForBlackJack(Dealer.Hand);
+                    if (blackJack)
+                    {
+                        Console.WriteLine("Dealer has BlackJack! Everyone loses!");
+                        foreach (KeyValuePair<Player, int> entry in Bets)
+                        {
+                            Dealer.Balance += entry.Value; // Adds entered bet values from everyone and gives it to the dealers balance.
+                        }
+                    }
                 }
             }
 
