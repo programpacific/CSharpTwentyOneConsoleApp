@@ -10,16 +10,44 @@ namespace TwentyOne
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcom to the Grand Hotel and Casion Let's start by telling me your name.");
+            string playerName = Console.ReadLine();
 
-            Deck deck = new Deck();
-            //deck.Shuffle(3);
+            Console.WriteLine("And how much money did you bring today?");
+            // Converted string input into an integer.
+            int bank = Convert.ToInt32(Console.ReadLine());
 
-            //foreach (Card card in deck.Cards)
-            //{
-            //    Console.WriteLine(card.Face + " of " + card.Suit);
-            //}
-            //Console.WriteLine(deck.Cards.Count);
-            Console.ReadLine();
+            Console.WriteLine("Hello, {0}. Would you like to join a game of 21 right now?", playerName);
+            // Converted to lower to assist in user input match.
+            string answer = Console.ReadLine().ToLower();
+            // Providing different possible user input matches to ease runability.
+            if (answer == "yes" || answer == "yeah" || answer == "y" || answer == "ya")
+            {
+                // Abstantiated Contstructor from "Player" Class.
+                Player player = new Player(playerName, bank);
+                //Abstantiated Constructor & the use of Polymorphism to expose overloaded operators.
+                Game game = new TwentyOneGame();
+                // Adding player to "Game", += is the same as doing the whole equation written out c = a + b, for example a += b.
+                game += player;
+                player.isActivelyPlaying = true;
+
+
+                // Told to use while loops with caution, even though we'll have multiple in this program, silly, but for demonstation purposes I suppose!
+
+                // While loop to check the status of "isActivelyPlaying & Balance variables to verify if program should be running or not.
+                // While both are "true" the program will fire.
+                while (player.isActivelyPlaying && player.Balance > 0)
+                {
+                    game.Play();
+                }
+                // Operates just after exiting the loop
+                game -= player;
+                Console.WriteLine("Thank you for playing!");
+            }
+            // If user were to type something besides "yes, yah, etc", this will fire, I think generally this would be an "else" statement.
+            Console.WriteLine("Feel free to look around the casino. Bye for now!");
+            Console.Read();
+            // All other operations happen outside of this main method in other classes.
         }
     }
 }
