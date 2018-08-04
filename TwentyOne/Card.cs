@@ -10,6 +10,12 @@ namespace TwentyOne
     {
         public Suit Suit { get; set; }
         public Face Face { get; set; }
+
+        // Special method to print in a specific format, overrides the standard "ToString" method.
+        public override string ToString()
+        {
+            return string.Format("|*| {0} of {1} |*|", Face, Suit);   
+        }
     }
     public enum Suit
     {

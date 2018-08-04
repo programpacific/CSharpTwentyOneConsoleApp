@@ -57,5 +57,40 @@ namespace TwentyOne
             if (value == 21) return true;
             else return false;
         }
+
+        public static bool IsBusted(List<Card> Hand)
+        {
+            int value = GetAllPossibleHandValues(Hand).Min();
+            if (value > 21) return true;
+            else return false;
+        }
+
+        // Performs basic logic to determine whether dealer should remain in the game, as the name implies.
+        public static bool ShouldDealerStay(List<Card> Hand)
+        {
+            int[] possibleHandValues = GetAllPossibleHandValues(Hand);
+            foreach (int value in possibleHandValues)
+            {
+                if (value > 16 && value < 22)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        // Use your noggin, guess what this one does..... However it is special due to its ability to be a 3 possible value nullable boolean.
+        public static bool? CompareHand(List<Card> PlayerHand, List<Card> DealerHand)
+        {
+            int[] PlayerResults = GetAllPossibleHandValues(PlayerHand);
+            int[] DealerResults = GetAllPossibleHandValues(DealerHand);
+
+            int playerScore = PlayerResults.Where(x => x < 22).Max(); // Takes items from player results and filters them for less than 22, and then what is the largest of those...
+            int dealerScore = DealerResults.Where(x => x < 22).Max(); // Same, but different. 
+
+            if (playerScore > dealerScore) return true;
+            else if (playerScore < dealerScore) return false;
+            else return null; 
+
+        }
     }
 }

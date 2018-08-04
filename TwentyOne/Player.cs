@@ -17,7 +17,8 @@ namespace TwentyOne
             Name = name;
         }
 
-        public List<Card> Hand { get; set; }
+        private List<Card> _hand = new List<Card>();
+        public List<Card> Hand { get { return _hand; } set { _hand = value; } }
         public int Balance { get; set; }
         public string Name { get; set; }
         public bool isActivelyPlaying { get; set; }
@@ -41,7 +42,7 @@ namespace TwentyOne
 
         public static Game operator+ (Game game, Player player)
         {
-            game.Players.Add(player);
+            game.Players.Add(player); // We first were unable to run the code because the list had not been abstantiated yet. Without it, the code would break and hang here.
             return game;
         }
 
