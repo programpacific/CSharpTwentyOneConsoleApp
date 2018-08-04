@@ -24,6 +24,7 @@ namespace TwentyOne
             Console.WriteLine(card);
             using (StreamWriter file = new StreamWriter(@"C:\Users\New\Desktop\TwentyOneLog.txt", true)) // The "using" keyword helps dispose of data at the end of operation to reduce memory consumption.
             {
+                file.WriteLine(DateTime.Now);
                 file.WriteLine(card);
             }
             Deck.Cards.RemoveAt(0);

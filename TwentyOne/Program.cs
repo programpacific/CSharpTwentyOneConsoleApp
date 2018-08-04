@@ -11,7 +11,6 @@ namespace TwentyOne
     {
         static void Main(string[] args)
         {
-
             //////////////////////////////////////////////
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.Black;
