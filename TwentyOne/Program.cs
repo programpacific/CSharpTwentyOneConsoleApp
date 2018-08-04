@@ -10,16 +10,23 @@ namespace TwentyOne
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Grand Hotel and Casino!\nLet's start by telling me your name.");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.WriteLine("Welcome to the Grand Hotel and Casino!\n\nLet's start by telling me your name.");
             string playerName = Console.ReadLine();
 
-            Console.WriteLine("And how much money did you bring today?");
-            // Converted string input into an integer.
-            int bank = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Hello, {0}. Would you like to join a game of 21 right now?", playerName);
+
+            Console.WriteLine("\nHello, {0}. Would you like to join a game of 21 right now?", playerName);
             // Converted to lower to assist in user input match.
             string answer = Console.ReadLine().ToLower();
+
+            // Relocated this chunk, thought it made more logical sense that you'd first agree to a game? It was originall just above the "Hello fjdklj, would you....."
+            Console.WriteLine("\nAnd how much money did you bring today?");
+            // Converted string input into an integer.
+            int bank = Convert.ToInt32(Console.ReadLine()); 
+
             // Providing different possible user input matches to ease runability.
             if (answer == "yes" || answer == "yeah" || answer == "y" || answer == "ya")
             {
@@ -42,10 +49,10 @@ namespace TwentyOne
                 }
                 // Operates just after exiting the loop
                 game -= player;
-                Console.WriteLine("Thank you for playing!");
+                Console.WriteLine("\nThank you for playing!");
             }
             // If user were to type something besides "yes, yah, etc", this will fire, I think generally this would be an "else" statement.
-            Console.WriteLine("Feel free to look around the casino. Bye for now!");
+            Console.WriteLine("\nFeel free to look around the casino. Bye for now!");
             Console.Read();
             // All other operations happen outside of this main method in other classes.
         }

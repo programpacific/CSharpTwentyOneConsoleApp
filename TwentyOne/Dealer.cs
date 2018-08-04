@@ -19,7 +19,7 @@ namespace TwentyOne
             // Writes what we are dealing.
             // Adding card to hand that is passed in from "Deck".
             Hand.Add(Deck.Cards.First());
-            Console.WriteLine(Deck.Cards.First().ToString() + "\n xxxxxxxxxxxxxxxxxx"); // The "/n" adds a new line to the end.
+            Console.WriteLine("\nxxxxxxxxxxxxxxxxxxxxxxxx\n" + Deck.Cards.First().ToString() + "\nxxxxxxxxxxxxxxxxxxxxxxxx\n"); // The "/n" adds a new line to the end.
             Deck.Cards.RemoveAt(0);
         }
     }

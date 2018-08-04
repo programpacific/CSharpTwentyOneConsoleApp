@@ -29,7 +29,7 @@ namespace TwentyOne
         {// Verifies that bet amount is available from users "Balance" variable.
             if (Balance - amount < 0)
             {
-                Console.WriteLine("You do not have enough to place a bet that size.");
+                Console.WriteLine("\n\nYou do not have enough to place a bet that size.");
                 return false;
             }
             else
