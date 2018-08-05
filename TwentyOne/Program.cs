@@ -13,11 +13,12 @@ namespace TwentyOne
     {
         static void Main(string[] args)
         {
-            //////////////////////////////////////////////
+            const string casinoName = "Grand Hotel and Casino";
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Black;            
+            Console.WriteLine("Welcome to the {0}!\n\n", casinoName);
             Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Black;
-
-            Console.WriteLine("Welcome to the Grand Hotel and Casino!\n\nLet's start by telling me your name.");
+            Console.WriteLine("Let's start by telling me your name.");
             string playerName = Console.ReadLine();
 
 
@@ -36,6 +37,15 @@ namespace TwentyOne
             {
                 // Abstantiated Contstructor from "Player" Class.
                 Player player = new Player(playerName, bank);
+                // Special "guid" identifier.
+                player.Id = Guid.NewGuid();
+
+                using (StreamWriter file = new StreamWriter(@"C:\Users\New\Desktop\TwentyOneLog.txt", true))
+                {
+                    file.WriteLine(player.Name.ToUpper()); // Added myself, thought it made sense?
+                    file.WriteLine(player.Id);
+                }
+
                 //Abstantiated Constructor & the use of Polymorphism to expose overloaded operators.
                 Game game = new TwentyOneGame();
                 // Adding player to "Game", += is the same as doing the whole equation written out c = a + b, for example a += b.
@@ -56,6 +66,7 @@ namespace TwentyOne
                 Console.WriteLine("\nThank you for playing!");
             }
             // If user were to type something besides "yes, yah, etc", this will fire, I think generally this would be an "else" statement.
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\nFeel free to look around the casino. Bye for now!");
             Console.Read();
             // All other operations happen outside of this main method in other classes.

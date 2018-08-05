@@ -8,6 +8,9 @@ namespace Casino
 {
     public class Player
     {
+        public Player(string name) : this(name, 100) // This constructor recycles the below constructor & assigns the values from below. 
+        {
+        }
         // Player Constructor
         // Always include at the top of a class!
         public Player(string name, int beginningBalance)
@@ -23,6 +26,7 @@ namespace Casino
         public string Name { get; set; }
         public bool isActivelyPlaying { get; set; }
         public bool Stay { get; set; }
+        public Guid Id { get; set; }
 
         //"Bet" logic should be in the "Player" class due to it being specific to the player. Keeps the code making logically sense!
         public bool Bet(int amount)
